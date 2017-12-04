@@ -21,6 +21,7 @@ public class TestGui extends JFrame{
 
 		panel.add(text);
 
+
 		Container cont = getContentPane();
 		cont.add(panel,BorderLayout.CENTER);
 	}
