@@ -4,6 +4,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.BorderLayout;
 
 public class TestJPasswordField extends JFrame{
@@ -13,23 +14,29 @@ public class TestJPasswordField extends JFrame{
 	}
 	TestJPasswordField(String title){
 		setTitle(title);
-		setSize(700,600);
+		setSize(500,400);
 		setLocation(400,300);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		//Panel
 		JPanel pnl = new JPanel();
-		JPanel pnl2 = new JPanel();
+		pnl.setLayout(new GridLayout(2, 2));
 		//Label
 		JLabel lbl1 = new JLabel("Email");
 		JLabel lbl2 = new JLabel("Password");
+		//Text Field
+		JTextField txt = new JTextField(30);
 		//PasswordField
-		JPasswordField pass = new JPasswordField(20);
+		JPasswordField pass = new JPasswordField(30);
 
 		pnl.add(lbl1);
-		pnl2.add(pass);
+		pnl.add(txt);
+
+		pnl.add(lbl2);
+		pnl.add(pass);
 
 		Container cont = getContentPane();
-		cont.add(pnl, BorderLayout.CENTER);
+		cont.add(pnl, BorderLayout.NORTH);
+
 	}
 }

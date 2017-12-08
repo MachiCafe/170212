@@ -28,6 +28,6 @@ public class TestCheckBox extends JFrame{
 			pnl.add(check3);
 
 			Container cont = getContentPane();
-			cont.add(pnl);
+			cont.add(pnl, BorderLayout.NORTH);
 		}
 }
