@@ -92,6 +92,7 @@ public class GuiInput extends JFrame implements ActionListener{
 			String text3 = txt3.getText();
 			String text4 = txt4.getText();
 			String text5 = "";
+
 			if(radio1.isSelected()){
 				text5 = radio1.getText();
 			}else if(radio2.isSelected()){
@@ -99,31 +100,53 @@ public class GuiInput extends JFrame implements ActionListener{
 			}else if(radio3.isSelected()){
 				text5 = radio3.getText();
 			}
-			File file = new File("data.txt");
-			try{
-				FileWriter fr = new FileWriter(file, true);
-				BufferedWriter bw = new BufferedWriter(fr);
 
-				bw.write(text1+","+text2+","+text3+","+text4+","+text5+"\r\n");
-				bw.close();
-			}catch(IOException ioe){
-				System.out.println(ioe.getMessage());
-			}finally{
-				txt1.setText("");
-				txt2.setText("");
-				txt3.setText("");
-				txt4.setText("");
-				group.clearSelection();
+			if(checkEmply()){
+				File file = new File("data.txt");
+				try{
+					FileWriter fr = new FileWriter(file, true);
+					BufferedWriter bw = new BufferedWriter(fr);
+					bw.write(text1+","+text2+","+text3+","+text4+","+text5+"\r\n");
+					bw.close();
+				}catch(IOException ioe){
+					System.out.println(ioe.getMessage());
+				}finally{
+					clear();
+				}
+				lbl.setText("完了しました。");
 			}
-			lbl.setText("完了しました。");
+			
 		}else if(btn.equals("Clear")){
 			System.out.println("Clear");
-			txt1.setText("");
-			txt2.setText("");
-			txt3.setText("");
-			txt4.setText("");
-			group.clearSelection();
+			clear();
 			lbl.setText("Clear！！！");
 		}
+	}
+
+	private void clear(){
+		txt1.setText("");
+		txt2.setText("");
+		txt3.setText("");
+		txt4.setText("");
+		group.clearSelection();
+	}
+
+	public boolean checkEmply(){
+		if(txt1.getText().isEmpty()){
+			lbl.setText("名前まだ書いていません。");
+			return false;
+		}else if(txt2.getText().isEmpty()){
+			lbl.setText("住所まだ書いていません。");
+			return false;
+		}else if(txt3.getText().isEmpty()){
+			lbl.setText("生年月日まだ書いていません。");
+			return false;
+		}else if(txt4.getText().isEmpty()){
+			lbl.setText("好きなものまだ書いていません。");
+			return false;
+		}else if(radio1.isSelected()==false &&radio2.isSelected()==false &&radio3.isSelected()==false ){
+			lbl.setText("性別を選択してください。。");
+			return false;
+		}else return true;
 	}
 }
