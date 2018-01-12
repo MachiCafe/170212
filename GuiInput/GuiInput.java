@@ -22,6 +22,7 @@ public class GuiInput extends JFrame implements ActionListener{
 	private ButtonGroup group;
 	private JLabel lbl;
 	private JRadioButton radio1,radio2,radio3;
+	
 	public static void main(String[] args) throws IOException {
 		GuiInput frame = new GuiInput("GUI INPUT");
 		frame.setVisible(true);
@@ -122,7 +123,7 @@ public class GuiInput extends JFrame implements ActionListener{
 			lbl.setText("Clear！！！");
 		}
 	}
-
+	//入力欄を消す
 	private void clear(){
 		txt1.setText("");
 		txt2.setText("");
@@ -130,7 +131,7 @@ public class GuiInput extends JFrame implements ActionListener{
 		txt4.setText("");
 		group.clearSelection();
 	}
-
+	//
 	public boolean checkEmply(){
 		if(txt1.getText().isEmpty()){
 			lbl.setText("名前まだ書いていません。");
