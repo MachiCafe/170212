@@ -17,12 +17,13 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+
 public class GuiInput extends JFrame implements ActionListener{
 	private JTextField txt1,txt2, txt3, txt4;
 	private ButtonGroup group;
 	private JLabel lbl;
 	private JRadioButton radio1,radio2,radio3;
-	
+
 	public static void main(String[] args) throws IOException {
 		GuiInput frame = new GuiInput("GUI INPUT");
 		frame.setVisible(true);
@@ -102,7 +103,7 @@ public class GuiInput extends JFrame implements ActionListener{
 				text5 = radio3.getText();
 			}
 
-			if(checkEmply()){
+			if(checkEmpty()){
 				File file = new File("data.txt");
 				try{
 					FileWriter fr = new FileWriter(file, true);
@@ -132,7 +133,7 @@ public class GuiInput extends JFrame implements ActionListener{
 		group.clearSelection();
 	}
 	//
-	public boolean checkEmply(){
+	public boolean checkEmpty(){
 		if(txt1.getText().isEmpty()){
 			lbl.setText("名前まだ書いていません。");
 			return false;
